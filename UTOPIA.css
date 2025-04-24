@@ -1,0 +1,153 @@
+/* ✅ General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* ✅ Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #181818;
+    box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.2);
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #00ff00;
+}
+
+/* ✅ Hero Section */
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    background-image: url('NEW 2.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+}
+
+#hero h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px cyan;
+    animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 2px 2px 5px cyan; }
+    100% { text-shadow: 2px 2px 15px lime; }
+}
+
+/* ✅ Tabbed Skills Section */
+.tab-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.tab-btn {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: blue;
+    color: white;
+}
+
+/* ✅ Tab Content */
+.tab-content {
+    display: none;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 85%;
+    padding-left: 5%;
+}
+
+/* ✅ Skill Cards */
+.skill-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.skill-card:hover {
+    transform: scale(1.05);
+    background: #252535;
+}
+
+.skill-card img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+/* ✅ Contact Form (Minimized) */
+form {
+    max-width: 400px;
+    padding: 16px;
+    margin: auto;
+    background: #181818;
+    border-radius: 10px;
+}
+
+form input, form textarea {
+    font-size: 14px;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background: #222;
+    color: white;
+    border: 1px solid #333;
+}
+
+/* ✅ Experience Section (Timeline Style) */
+.timeline {
+    position: relative;
+    max-width: 700px;
+    margin: auto;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 20px;
+    border-left: 3px solid cyan;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding-left: 40px;
+}
+
+.timeline-marker {
+    width: 15px;
+    height: 15px;
+    background: cyan;
+    position: absolute;
+    left: -9px;
+    top: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px cyan;
+}

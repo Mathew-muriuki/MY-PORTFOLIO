@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTOPIA SOFTWARES</title>
+    <link rel="stylesheet" href="UTOPIA.css">
+    <script defer src="UTOPIA.js"></script>
+</head>
+<body>
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="main-header">
+        <nav class="fixed top-0 w-full bg-black bg-opacity-75 text-white flex justify-between items-center px-8 py-4 shadow-lg z-50">
+            <div class="relative text-2xl font-bold tracking-wide uppercase">
+                <span class="text-green-400 relative animate-blinking-lights">MATHEW</span> 
+                <span class="text-white">MURIUKI</span>
+                <div class="absolute -inset-1 rounded-md border-2 border-green-400 animate-border-glow"></div>
+            </div>                        
+            <ul class="flex space-x-8 text-lg">
+                <li class="Home">
+                    <a href="#hero" class="hover:text-green-400 transition duration-300">Home</a>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-300 group-hover:w-full"></div>
+                </li>
+                <li class="Skills">
+                    <a href="#skills" class="hover:text-green-400 transition duration-300">My Skills</a>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-300 group-hover:w-full"></div>
+                </li>
+                <li class="Experience">
+                    <a href="#experience" class="hover:text-green-400 transition duration-300">Experience</a>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-300 group-hover:w-full"></div>
+                </li>
+                <li class="Contact">
+                    <a href="#contact" class="hover:text-green-400 transition duration-300">Contact Me</a>
+                    <div class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-300 group-hover:w-full"></div>
+                </li>
+            </ul>
+        </nav>
+        <section id="hero" class="flex items-center justify-center h-[80vh] bg-cover bg-center relative">
+            <div class="flex flex-col md:flex-row items-center justify-center w-full px-8">
+                <!-- Profile Image -->
+                <div class="md:w-1/3 flex justify-center">
+                    <img src="Portfollio Pic.jpg" alt="Profile Image"
+                         class="w-60 h-61 object-cover rounded-full border-4 border-white shadow-lg">
+                </div>
+                
+                <!-- Hero Text -->
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white animate-gradient">Hi, I'm Mathew Muriuki</h1>
+                    <p class="text-lg text-gray-300 mt-2 animate-fade">
+                        Passionate Software Engineer & IT Specialist
+                    </p>
+                    <button class="mt-6 px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700">
+                        View My Work
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section id="experience" class="py-16 bg-gray-900 text-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-blue-500">My Experience</h2>
+                <p class="text-center text-gray-400 mt-2">My professional journey and work experience</p>
+        
+                <div class="timeline mt-10">
+                    <!-- Experience 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-semibold text-green-400">ICT Intern - County Government of Kirinyaga</h3>
+                            <p class="text-gray-300 mt-2">Nov 2023 - Jan 2024</p>
+                            <p class="text-gray-400 mt-2">Provided IT support and user assistance, troubleshooting system issues, and improving system security.</p>
+                        </div>
+                    </div>
+        
+                    <!-- Experience 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-semibold text-green-400">ICT Intern - Ben Olives Enterprises Ltd</h3>
+                            <p class="text-gray-300 mt-2">Dec 2024 - Jan 2025</p>
+                            <p class="text-gray-400 mt-2">Managed Kaspersky Cloud accounts, handled product sales, and provided cybersecurity solutions to clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>          
+    <!-- My Skills Section -->
+    <section id="skills" class="py-10 bg-gray-900 text-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold">My Skills</h2>
+            <p class="text-gray-400 mt-2">Expertise across various domains</p>
+    
+            <!-- Tabbed Navigation -->
+            <div class="flex justify-center mt-6 space-x-4">
+                <button class="tab-btn active" data-tab="webdev">Web Development</button>
+                <button class="tab-btn" data-tab="it">IT Support</button>
+                <button class="tab-btn" data-tab="security">Cybersecurity</button>
+                <button class="tab-btn" data-tab="graphic">Graphic Design</button>
+            </div>
+    
+            <!-- Tabbed Content -->
+            <div id="webdev" class="tab-pane grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- HTML, CSS & JavaScript -->
+                <div class="skill-card">
+                    <img src="C:/Users/Admin/Downloads/web icon.webp" alt="Web Dev" class="w-8 h-8 mx-auto">
+                    <h3>HTML, Tailwind CSS & React.js</h3>
+                    <p>Building responsive and modern web applications with advanced UI/UX experience</p>
+                </div>
+            </div>           
+                <!-- IT Support (Hidden by Default) -->
+                <div id="it" class="tab-pane hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="skill-card">
+                        <img src="C:/Users/Admin/Downloads/IT support icon.jpg" alt="IT Support" class="w-8 h-8 mx-auto">
+                        <h3>System Maintenance</h3>
+                        <p>Installing, troubleshooting, and optimizing systems</p>
+                    </div>
+                </div>
+            
+                <!-- Cybersecurity (Hidden by Default) -->
+                <div id="security" class="tab-pane hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="skill-card">
+                        <img src="C:/Users/Admin/Downloads/cybersecurity icon.jpg" alt="Cybersecurity" class="w-8 h-8 mx-auto">
+                        <h3>Bitdefender & Kaspersky</h3>
+                        <p>Implementing cybersecurity solutions to protect data</p>
+                    </div>
+                </div>
+            
+                <!-- Graphic Design (Hidden by Default) -->
+                <div id="graphic" class="tab-pane hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="skill-card">
+                        <img src="C:/Users/Admin/Downloads/Graphic design icon.jpg" alt="Graphic Design" class="w-8 h-8 mx-auto">
+                        <h3>Canva & Figma</h3>
+                        <p>Specializing in UI/UX design, branding, and digital creativity.</p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </section>
+        <section id="contact" class="py-16 bg-gray-800 text-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-blue-500">Contact Me</h2>
+        <p class="text-center text-gray-300 mt-2">
+            Have a project in mind? Feel free to reach out!
+        </p>
+
+        <div class="flex flex-col md:flex-row mt-10">
+            <!-- Contact Info -->
+            <div class="w-full md:w-1/3 text-center md:text-left">
+                <h3 class="text-xl font-semibold text-green-400">Get In Touch</h3>
+                <p class="text-gray-300 mt-4"><strong>Email:</strong>muriuki_mathew@yahoo.com</p>
+                <p class="text-gray-300 mt-2"><strong>Phone:</strong> +254 745 914 891</p>
+                <p class="text-gray-300 mt-2"><strong>Location:</strong> Nairobi, Kenya</p>
+            </div>
+
+            <!-- Contact Form -->
+           <!-- Contact Form -->
+<div class="w-full md:w-1/2 mx-auto mt-6 md:mt-0">
+    <form action="#" method="POST" class="bg-gray-900 p-4 rounded-lg shadow-lg">
+        <div class="mb-3">
+            <label for="name" class="block text-gray-400 text-sm">Name</label>
+            <input type="text" id="name" name="name" class="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:ring focus:ring-blue-500 text-sm">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="block text-gray-400 text-sm">Email</label>
+            <input type="email" id="email" name="email" class="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:ring focus:ring-blue-500 text-sm">
+        </div>
+        <div class="mb-3">
+            <label for="message" class="block text-gray-400 text-sm">Message</label>
+            <textarea id="message" name="message" rows="3" class="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:ring focus:ring-blue-500 text-sm"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition text-sm">
+            Send Message
+        </button>
+    </form>
+</div>
+        </div>
+    </div>
+</section>
+    </body>
+</html>
