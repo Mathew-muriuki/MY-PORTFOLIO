@@ -16,3 +16,17 @@ Thumbs.db
 # IDEs
 .vscode/
 .idea/
+# Ignore .env files
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# IDE settings
+.vscode/
+.idea/
