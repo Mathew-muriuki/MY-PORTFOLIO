@@ -1,76 +1,79 @@
-require('dotenv').config();
 const express = require('express');
-const mysql = require('mysql2');
+const mysql = require('mysql');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
+// ✅ Middleware
 app.use(cors());
-app.use(bodyParser.json());
-app.use('/uploads', express.static('uploads')); // serve uploaded files
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Database connection
+// ✅ Serve files from /uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// ✅ MySQL DB connection
 const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
-// Test connection
 db.connect(err => {
-    if (err) {
-        console.error('Database connection failed: ' + err.stack);
-        return;
-    }
-    console.log('✅ Connected to MySQL database.');
+  if (err) {
+    console.error('❌ Database connection failed:', err);
+  } else {
+    console.log('✅ Connected to MySQL database');
+  }
 });
 
-// Storage settings for uploading files
+// ✅ File upload config using multer
 const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'uploads/');
-    },
-    filename: function(req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Folder to store uploaded files
+  },
+  filename: (req, file, cb) => {
+    const uniqueName = Date.now() + '-' + file.originalname;
+    cb(null, uniqueName); // Ensure filename is unique and has proper extension
+  }
 });
 
 const upload = multer({ storage });
 
-// API route: Upload project (for future steps)
-app.post('/upload', upload.fields([{ name: 'file' }, { name: 'image' }]), (req, res) => {
-    const { title, description } = req.body;
-    const file_path = req.files['file'][0].path;
-    const image_path = req.files['image'][0].path;
+// ✅ Upload route
+app.post('/upload', upload.single('file'), (req, res) => {
+  const { title, description } = req.body;
+  const filename = req.file.filename;
 
-    const sql = "INSERT INTO projects (title, description, file_path, image_path) VALUES (?, ?, ?, ?)";
-    db.query(sql, [title, description, file_path, image_path], (err, result) => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Database error' });
-        } else {
-            res.status(200).json({ message: 'Project uploaded successfully!' });
-        }
-    });
+  const sql = 'INSERT INTO projects (title, description, filename) VALUES (?, ?, ?)';
+  db.query(sql, [title, description, filename], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.status(200).json({ message: '✅ File uploaded successfully' });
+  });
 });
 
-// API route: Fetch all projects
-app.get('/projects', (req, res) => {
-    const sql = "SELECT * FROM projects";
-    db.query(sql, (err, results) => {
-        if (err) {
-            res.status(500).json({ error: 'Database error' });
-        } else {
-            res.json(results);
-        }
-    });
+// ✅ Fetch all projects
+app.get('/api/projects', (req, res) => {
+  const sql = 'SELECT * FROM projects ORDER BY created_at DESC';
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(results);
+  });
 });
 
-// Start server
-const PORT = process.env.PORT || 5000;
+// ✅ Optional: Default homepage route
+app.get('/', (req, res) => {
+  res.send('📡 UTOPIA Portfolio API is running.');
+});
+
+// ✅ Start the server
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

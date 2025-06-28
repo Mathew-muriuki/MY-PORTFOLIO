@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Project | UTOPIA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans min-h-screen flex items-center justify-center">
+
+  <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-4 text-cyan-400">Upload a New Project</h2>
+
+    <!-- ✅ Correct form starts here -->
+    <form id="uploadForm" action="http://localhost:5000/upload" method="POST" enctype="multipart/form-data">
+      <div class="mb-4">
+        <label for="title" class="block mb-1 text-sm font-semibold">Project Title</label>
+        <input type="text" id="title" name="title" required
+               class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+      </div>
+
+      <div class="mb-4">
+        <label for="description" class="block mb-1 text-sm font-semibold">Description</label>
+        <textarea id="description" name="description" rows="3" required
+                  class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+      </div>
+
+      <div class="mb-4">
+        <label for="file" class="block mb-1 text-sm font-semibold">Select File</label>
+        <input type="file" id="file" name="file" accept=".pdf,.jpg,.jpeg,.png" required
+               class="w-full text-white file:bg-cyan-600 file:text-white file:rounded file:px-4 file:py-2 file:border-0 hover:file:bg-cyan-500">
+      </div>
+
+      <button type="submit"
+              class="w-full py-2 bg-cyan-600 hover:bg-cyan-500 font-semibold rounded transition">
+        🚀 Upload Project
+      </button>
+    </form>
+
+    <p id="message" class="text-sm mt-4 text-green-400 hidden"></p>
+  </div>
+
+  <!-- ✅ JavaScript to handle success/error feedback -->
+  <script>
+    const form = document.getElementById('uploadForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        message.textContent = result.message;
+        message.classList.remove('hidden');
+        message.classList.remove('text-red-500');
+        message.classList.add('text-green-400');
+        form.reset();
+      } else {
+        message.textContent = result.error || 'Upload failed.';
+        message.classList.remove('hidden');
+        message.classList.remove('text-green-400');
+        message.classList.add('text-red-500');
+      }
+    });
+  </script>
+</body>
+</html>
